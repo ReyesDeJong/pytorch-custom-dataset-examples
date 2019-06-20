@@ -123,4 +123,4 @@ if __name__ == "__main__":
         loss.backward()
         # Update weights
         optimizer.step()
-        break
+        print(i, loss.item())
