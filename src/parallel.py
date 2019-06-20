@@ -8,8 +8,8 @@ from torch.utils.data import Dataset, DataLoader
 input_size = 5
 output_size = 2
 
-batch_size = 30
-data_size = 100
+batch_size = 64
+data_size = 1000
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
