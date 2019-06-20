@@ -1,3 +1,5 @@
+import time
+
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
@@ -43,6 +45,7 @@ class Model(nn.Module):
 
     return output
 
+
 model = Model(input_size, output_size)
 if torch.cuda.device_count() > 1:
   print("Let's use", torch.cuda.device_count(), "GPUs!")
@@ -51,8 +54,12 @@ if torch.cuda.device_count() > 1:
 
 model.to(device)
 
-for data in rand_loader:
+start = time.time()
+for _ in range(200):
+  for data in rand_loader:
     input = data.to(device)
     output = model(input)
     print("Outside: input size", input.size(),
           "output_size", output.size())
+end = time.time()
+print(end - start)
